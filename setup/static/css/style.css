@@ -1,0 +1,60 @@
+/* styles.css */
+body {
+    background-color: #001f5f;
+    color: #ffffff;
+    font-family: "Bookerly", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #001f5f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+}
+header img {
+    max-width: 150px;
+    height: auto;
+}
+.title {
+    color: #ffffff; /* Cor do título */
+    font-size: 32px; /* Tamanho do título */
+    text-align: left; /* Alinhamento à direita */
+    flex: 1; /* Ocupa o espaço restante ao lado da logo */
+    margin-left: 50px; /* Espaço à direita da logo */
+}
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+.video-container {
+    flex: 2; /* Maior tamanho para o vídeo */
+    padding-right: 20px;
+}
+.text-box {
+    flex: 1; /* Espaço menor para escrever */
+    background-color: rgba(0, 47, 127, 0.6);
+    padding: 20px;
+    border-radius: 5px;
+}
+.contador-verde {
+    background-color: green;
+    color: white;
+    font-size: 24px; /* Tamanho de fonte maior */
+    padding: 5px 10px; /* Espaçamento interno para melhor aparência */
+}
+.contador-vermelho {
+    background-color: red;
+    color: white;
+    font-size: 24px; /* Tamanho de fonte maior */
+    padding: 5px 10px; /* Espaçamento interno para melhor aparência */
+}
+.texto-classe {
+    color: white;
+    font-size: 16px; /* Tamanho de fonte maior */
+    padding: 5px 10px; /* Espaçamento interno para melhor aparência */
+}
