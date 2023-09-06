@@ -19,7 +19,32 @@
         <div class="text-box">
             <p><img width="180" height="120" src="{% url 'detect_feed' %}" alt=""></p>
             <h1>Contador:</h1>
+            <h2><span id="detected"></span></h2>
         </div>
     </div>
+
+    <script>
+        // Função para atualizar o conteúdo do <span> com os dados retornados por class_feed
+        function updateDetectedValue() {
+            // Adicione um parâmetro de data/hora aleatório à URL para evitar o cache
+            const url = "{% url 'class_feed' %}?_=" + new Date().getTime();
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // Atualize o conteúdo do <span> com o valor retornado
+                    document.getElementById("detected").textContent = data.detected;
+                })
+                .catch(error => {
+                    console.error("Erro ao buscar dados: ", error);
+                });
+        }
+
+        // Chame a função para atualizar o valor assim que a página for carregada
+        document.addEventListener("DOMContentLoaded", function() {
+            updateDetectedValue();
+        });
+
+    </script>
 </body>
 </html>
