@@ -7,3 +7,5 @@ function clicar_botao() {
 }
 
 document.querySelector('.meu_botao').addEventListener('click', clicar_botao);
+
+setInterval(contarArquivos, 100);

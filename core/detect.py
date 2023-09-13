@@ -6,6 +6,7 @@ import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
 last_frame = None
+contador = 0
 detected_class = "Esperando detecção"
 model_detect = YOLO("core/best_detect.pt")
 model_classify = YOLO("core/best_classify.pt")
@@ -29,6 +30,7 @@ def stream():
                 b'Content-Type: image/jpeg\r\n\r\n' + image_bytes + b'\r\n\r\n')
 
 def detect():
+    global contador
     global last_frame 
     global detected_class
 
@@ -52,6 +54,7 @@ def detect():
                     class_id = det.names[int(det.boxes.cls)]  # ID da classe
 
                     if conf > 0.2:  # Considerar apenas detecções com confiança acima de 0.# Desenhar a caixa delimitadora na imagem
+                        contador = contador + 1
                         xmin, ymin, xmax, ymax = map(int,(bbox[0][0], bbox[0][1], bbox[0][2], bbox[0][3]))
                         imagem_print = frame.copy()
                         cropped_image = imagem_print[int(ymin):int(ymax), int(xmin):int(xmax)]
@@ -90,3 +93,7 @@ def detect():
                         image_bytes = cv2.imencode('.jpg', classify_rgb )[1].tobytes()
                         yield (b'--frame\r\n'
                                 b'Content-Type: image/jpeg\r\n\r\n' + image_bytes + b'\r\n\r\n')
+
+def teste_contador():
+    global contador
+    contador
