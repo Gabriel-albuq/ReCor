@@ -33,7 +33,7 @@ def detect():
     global detected_class
 
     last_capture_time = time.time()
-    intervalo = 3
+    intervalo = 0.2
 
     while True:
         current_time = time.time()
@@ -51,7 +51,7 @@ def detect():
                     conf = float(det.boxes.conf.cpu().numpy())   # Confiança da detecção
                     class_id = det.names[int(det.boxes.cls)]  # ID da classe
 
-                    if conf > 0.5:  # Considerar apenas detecções com confiança acima de 0.# Desenhar a caixa delimitadora na imagem
+                    if conf > 0.2:  # Considerar apenas detecções com confiança acima de 0.# Desenhar a caixa delimitadora na imagem
                         xmin, ymin, xmax, ymax = map(int,(bbox[0][0], bbox[0][1], bbox[0][2], bbox[0][3]))
                         imagem_print = frame.copy()
                         cropped_image = imagem_print[int(ymin):int(ymax), int(xmin):int(xmax)]
@@ -90,7 +90,3 @@ def detect():
                         image_bytes = cv2.imencode('.jpg', classify_rgb )[1].tobytes()
                         yield (b'--frame\r\n'
                                 b'Content-Type: image/jpeg\r\n\r\n' + image_bytes + b'\r\n\r\n')
-                        
-def detect_class():
-    global detected_class
-    return detected_class
