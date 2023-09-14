@@ -41,20 +41,10 @@ header img {
     padding: 20px;
     border-radius: 5px;
 }
-.contador-verde {
-    background-color: green;
-    color: white;
-    font-size: 24px; /* Tamanho de fonte maior */
-    padding: 5px 10px; /* Espaçamento interno para melhor aparência */
-}
-.contador-vermelho {
-    background-color: red;
-    color: white;
-    font-size: 24px; /* Tamanho de fonte maior */
-    padding: 5px 10px; /* Espaçamento interno para melhor aparência */
-}
-.texto-classe {
-    color: white;
-    font-size: 16px; /* Tamanho de fonte maior */
-    padding: 5px 10px; /* Espaçamento interno para melhor aparência */
+.texto-classificacao {
+    font-size: 32px; /* Defina o tamanho da fonte desejado */
+  }
+
+.titulo-box {
+    font-size: 22px; /* Defina o tamanho da fonte desejado */
 }
