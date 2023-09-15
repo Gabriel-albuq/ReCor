@@ -48,11 +48,11 @@ def detect():
     global classify_rgb
 
     escala = 6
-    espessura = 4
+    espessura = 6
     cor_texto = (255, 255, 255)  # Cor do texto em branco (BGR)
 
     last_capture_time = time.time()
-    intervalo = 1
+    intervalo = 2
 
     while True:
         current_time = time.time()
@@ -69,7 +69,7 @@ def detect():
                 frame = last_frame  # Use o último frame capturado
                 results = model_detect(frame)  # Execute o modelo
 
-                if len(results[0]) > 0:
+                if len(results[0]) > 0: #Caso queira pegar mais de um biscoito por vez usar for det in results[0]:
                     det = results[0][0]
                     bbox = det.boxes.xyxy[:4].cpu().numpy()  # Coordenadas da caixa delimitadora (xmin, ymin, xmax, ymax)
                     conf = float(det.boxes.conf.cpu().numpy())   # Confiança da detecção
@@ -125,7 +125,7 @@ def detect():
                         imagem_com_retangulo[:, :largura, :] = classify_rgb
                         cv2.rectangle(imagem_com_retangulo, (largura, 0), (largura + largura_retangulo, altura), cor_fundo, thickness=cv2.FILLED)
 
-                        cv2.putText(imagem_com_retangulo, classif, (int(largura + 20), int((altura/2)+30)), cv2.FONT_HERSHEY_SIMPLEX, escala, cor_texto, espessura)
+                        cv2.putText(imagem_com_retangulo, classif, (int(largura + 20), int((altura/2)+55)), cv2.FONT_HERSHEY_DUPLEX, escala, cor_texto, espessura)
 
                         classify_rgb = imagem_com_retangulo
 
